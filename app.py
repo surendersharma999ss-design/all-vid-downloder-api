@@ -13,9 +13,11 @@ def root():
 def download_video(url: str = Query(..., description="Video URL")):
     try:
         ydl_opts = {
-            'format': 'best',
-            'outtmpl': 'downloads/%(title)s.%(ext)s',
-        }
+    "quiet": True,
+    "skip_download": True,
+    "format": "best",
+    "cookiefile": "cookies.txt"
+}
 
         os.makedirs("downloads", exist_ok=True)
 
